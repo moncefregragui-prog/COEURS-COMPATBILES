@@ -403,6 +403,20 @@
       color: var(--muted);
       font-size: 14px;
     }
+    .success-box {
+      display: none;
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #eefaf4;
+      border: 1px solid #cfeedd;
+      color: var(--success);
+    }
+    .success-box strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
 
     footer {
       background: white;
@@ -762,7 +776,7 @@
         <div class="form-card">
           <div class="eyebrow">Demande d’inscription</div>
           <h3 style="font-size:30px;margin:10px 0 0;">Recevoir les premières informations</h3>
-          <form method="POST" action="https://script.google.com/macros/s/AKfycbyKpwkRwrEoWWPBVqI7Oft5QgjeD8BHcteACqau1fn6Y5faK-P0_v-Qa5juGtqDEP9NQA/exec">
+          <form id="lead-form" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyKpwkRwrEoWWPBVqI7Oft5QgjeD8BHcteACqau1fn6Y5faK-P0_v-Qa5juGtqDEP9NQA/exec" onsubmit="handleLeadSubmit()">
             <input name="nom_complet" placeholder="Nom complet" />
             <input name="email" type="email" placeholder="Adresse email" />
             <input name="telephone" type="tel" placeholder="Numéro de téléphone" />
@@ -774,8 +788,13 @@
             </select>
             <textarea name="objectif" placeholder="Parlez-nous de votre objectif"></textarea>
             <label class="consent"><input name="consentement" type="checkbox" value="oui" style="margin-top:3px; width:14px; height:14px; flex:0 0 14px;" /> <span>J’accepte d’être contacté(e) par Cœurs Compatibles dans le cadre de ma demande d’informations. </span></label>
-            <div style="margin-top:16px;"><button class="btn btn-primary btn-block" type="submit">Envoyer ma demande</button></div>
+            <div style="margin-top:16px;"><button id="lead-submit-btn" class="btn btn-primary btn-block" type="submit">Envoyer ma demande</button></div>
           </form>
+          <div id="lead-success" class="success-box">
+            <strong>Votre demande a été envoyée avec succès.</strong>
+            <span>Vous serez contacté dans le plus bref des délais.</span>
+          </div>
+          <iframe name="hidden_iframe" style="display:none;"></iframe>
         </div>
       </div>
     </section>
@@ -834,5 +853,20 @@
       <div class="footer-note">© 2026 Cœurs Compatibles • Site vitrine de présentation • Tous droits réservés</div>
     </div>
   </footer>
+  <script>
+    function handleLeadSubmit() {
+      var form = document.getElementById('lead-form');
+      var button = document.getElementById('lead-submit-btn');
+      var success = document.getElementById('lead-success');
+      if (!form || !button || !success) return true;
+      button.disabled = true;
+      button.textContent = 'Envoi en cours...';
+      setTimeout(function () {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }, 700);
+      return true;
+    }
+  </script>
 </body>
 </html>
