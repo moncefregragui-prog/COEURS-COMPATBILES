@@ -775,7 +775,7 @@
 
         <div class="form-card">
           <div class="eyebrow">Demande d’inscription</div>
-          <h3 style="font-size:30px;margin:10px 0 0;">Recevoir les premières informations</h3>
+          
           <form id="lead-form" method="POST" action="https://script.google.com/macros/s/AKfycbyKpwkRwrEoWWPBVqI7Oft5QgjeD8BHcteACqau1fn6Y5faK-P0_v-Qa5juGtqDEP9NQA/exec" onsubmit="return handleLeadSubmit(event)">
             <input name="nom_complet" placeholder="Nom complet" />
             <input name="email" type="email" placeholder="Adresse email" />
@@ -790,9 +790,14 @@
             <label class="consent"><input name="consentement" type="checkbox" value="oui" style="margin-top:3px; width:14px; height:14px; flex:0 0 14px;" /> <span>J’accepte d’être contacté(e) par Cœurs Compatibles dans le cadre de ma demande d’informations. </span></label>
             <div style="margin-top:16px;"><button id="lead-submit-btn" class="btn btn-primary btn-block" type="submit">Envoyer ma demande</button></div>
           </form>
-          <div id="lead-success" class="success-box">
-            <strong>Votre demande a été envoyée avec succès.</strong>
-            <span>Vous serez contacté dans le plus bref des délais.</span>
+          <div id="lead-success" class="success-box" style="padding:24px 22px; border-radius:24px; background:linear-gradient(135deg, #eefaf4, #f7fffb); border:1px solid #cfeedd; box-shadow:0 12px 28px rgba(15,140,91,.08);">
+            <div style="display:flex; align-items:flex-start; gap:14px;">
+              <div style="width:46px; height:46px; border-radius:14px; background:#0f8c5b; color:white; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:700; flex:0 0 46px;">✓</div>
+              <div>
+                <strong style="display:block; font-size:24px; line-height:1.25; margin-bottom:8px; color:#0f8c5b;">Votre demande a été envoyée avec succès.</strong>
+                <span style="display:block; font-size:16px; line-height:1.7; color:#167a53;">Vous serez contactée dans le plus bref des délais.</span>
+              </div>
+            </div>
           </div>
           </div>
       </div>
