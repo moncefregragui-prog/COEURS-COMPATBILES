@@ -776,7 +776,7 @@
         <div class="form-card">
           <div class="eyebrow">Demande d’inscription</div>
           <h3 style="font-size:30px;margin:10px 0 0;">Recevoir les premières informations</h3>
-          <form id="lead-form" method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbyKpwkRwrEoWWPBVqI7Oft5QgjeD8BHcteACqau1fn6Y5faK-P0_v-Qa5juGtqDEP9NQA/exec" onsubmit="handleLeadSubmit()">
+          <form id="lead-form" method="POST" action="https://script.google.com/macros/s/AKfycbyKpwkRwrEoWWPBVqI7Oft5QgjeD8BHcteACqau1fn6Y5faK-P0_v-Qa5juGtqDEP9NQA/exec" onsubmit="return handleLeadSubmit(event)">
             <input name="nom_complet" placeholder="Nom complet" />
             <input name="email" type="email" placeholder="Adresse email" />
             <input name="telephone" type="tel" placeholder="Numéro de téléphone" />
@@ -794,8 +794,7 @@
             <strong>Votre demande a été envoyée avec succès.</strong>
             <span>Vous serez contacté dans le plus bref des délais.</span>
           </div>
-          <iframe name="hidden_iframe" style="display:none;"></iframe>
-        </div>
+          </div>
       </div>
     </section>
   </main>
@@ -854,18 +853,31 @@
     </div>
   </footer>
   <script>
-    function handleLeadSubmit() {
+    function handleLeadSubmit(event) {
+      if (event) event.preventDefault();
       var form = document.getElementById('lead-form');
       var button = document.getElementById('lead-submit-btn');
       var success = document.getElementById('lead-success');
-      if (!form || !button || !success) return true;
+      if (!form || !button || !success) return false;
+
       button.disabled = true;
       button.textContent = 'Envoi en cours...';
-      setTimeout(function () {
+
+      var formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+      }).then(function () {
         form.style.display = 'none';
         success.style.display = 'block';
-      }, 700);
-      return true;
+      }).catch(function () {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      });
+
+      return false;
     }
   </script>
 </body>
