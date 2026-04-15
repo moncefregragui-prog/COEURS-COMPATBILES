@@ -151,7 +151,102 @@
     }
 
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+    .hero-top-visual {
+      margin-bottom: 28px;
+      min-height: 250px;
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, rgba(46,27,34,.04), rgba(46,27,34,.12)),
+        url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      border: 1px solid #efd6dd;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-top-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,249,250,.72) 0%, rgba(255,249,250,.18) 55%, rgba(255,249,250,0) 100%);
+    }
+    .hero-top-content {
+      position: relative;
+      z-index: 1;
+      padding: 26px;
+      max-width: 420px;
+    }
+    .hero-top-chip {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.92);
+      color: var(--primary-dark);
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(122,23,53,.08);
+    }
+    .hero-top-title {
+      margin-top: 16px;
+      font-size: 28px;
+      line-height: 1.15;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .hero-top-text {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 15px;
+    }
     .hero-tags { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 24px; color: #8a6a73; font-size: 14px; }
+
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, rgba(46,27,34,0.06), rgba(46,27,34,0.25)),
+        url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      border: 1px solid #efd6dd;
+      box-shadow: var(--shadow);
+    }
+    .hero-photo-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.88);
+      color: var(--primary-dark);
+      font-size: 13px;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
+    }
+    .hero-photo-caption {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+    }
+    .hero-photo-caption strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--text);
+    }
+    .hero-photo-caption span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 15px;
+    }
 
     .card {
       background: white;
@@ -381,6 +476,14 @@
 
   <main>
     <section class="hero">
+      <div class="container" style="margin-bottom:34px;">
+        <div style="position:relative; overflow:hidden; min-height:420px; border-radius:34px; background:linear-gradient(180deg, rgba(46,27,34,.10), rgba(46,27,34,.28)), url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; border:1px solid #efd6dd; box-shadow: var(--shadow);">
+          <div style="position:absolute; top:24px; left:24px; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:rgba(255,255,255,.90); color:var(--primary-dark); font-size:13px; font-weight:700;">💍 Bagues • Romance • Engagement</div>
+          <div style="position:absolute; left:24px; right:24px; bottom:24px; max-width:560px; padding:24px; border-radius:26px; background:rgba(255,255,255,.90); backdrop-filter:blur(10px);">
+            <div style="font-size:34px; line-height:1.1; font-weight:800; color:var(--text);">Des rencontres sérieuses pensées pour mener à une belle promesse d’avenir.</div>
+          </div>
+        </div>
+      </div>
       <div class="container hero-grid">
         <div>
           <span class="pill">Rencontres sérieuses en France • Matchmaking orienté mariage</span>
@@ -498,17 +601,32 @@
           </div>
         </div>
 
-        <div class="card">
-          <div class="eyebrow">Palette de couleurs</div>
-          <div class="palette">
-            <div class="swatch"><div class="swatch-color" style="background:#7A1735"></div><div style="margin-top:10px;font-weight:700;">Bordeaux</div><small>#7A1735</small></div>
-            <div class="swatch"><div class="swatch-color" style="background:#D7265B"></div><div style="margin-top:10px;font-weight:700;">Rose signature</div><small>#D7265B</small></div>
-            <div class="swatch"><div class="swatch-color" style="background:#F4A261"></div><div style="margin-top:10px;font-weight:700;">Pêche douce</div><small>#F4A261</small></div>
-            <div class="swatch"><div class="swatch-color" style="background:#FFF1F4"></div><div style="margin-top:10px;font-weight:700;">Rose pâle</div><small>#FFF1F4</small></div>
+        <div class="card" style="display:flex; flex-direction:column; justify-content:space-between; min-height:100%; background:linear-gradient(135deg, #7A1735, #D7265B); color:white; border:none;">
+          <div>
+            <div class="eyebrow" style="color:rgba(255,255,255,.78);">Ce que le prospect comprend</div>
+            <h3 style="font-size:34px; line-height:1.15; margin-top:14px; color:white;">Un service sérieux, moderne et pensé pour aller jusqu’au mariage.</h3>
+            <p style="margin-top:16px; color:rgba(255,255,255,.88); font-size:17px; line-height:1.8;">
+              Cette zone met en valeur ce qui rassure le visiteur dès la première lecture : une intention claire, une sélection plus intelligente des profils et une vraie logique d’engagement.
+            </p>
           </div>
-          <div style="margin-top:18px;padding:20px;border-radius:18px;background:#fff7f8;">
-            <div class="eyebrow">Slogan</div>
-            <div style="font-size:28px;font-weight:800;margin-top:10px;line-height:1.2;">Trouvez un partenaire compatible pour construire l’avenir.</div>
+
+          <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; margin-top:28px;">
+            <div style="border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.10); border-radius:20px; padding:18px;">
+              <div style="font-size:28px; font-weight:800;">Gratuit</div>
+              <div style="margin-top:6px; color:rgba(255,255,255,.8); font-size:14px;">Essai sans pression</div>
+            </div>
+            <div style="border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.10); border-radius:20px; padding:18px;">
+              <div style="font-size:28px; font-weight:800;">IA</div>
+              <div style="margin-top:6px; color:rgba(255,255,255,.8); font-size:14px;">Compatibilité assistée</div>
+            </div>
+            <div style="border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.10); border-radius:20px; padding:18px;">
+              <div style="font-size:28px; font-weight:800;">Premium</div>
+              <div style="margin-top:6px; color:rgba(255,255,255,.8); font-size:14px;">Image plus crédible</div>
+            </div>
+            <div style="border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.10); border-radius:20px; padding:18px;">
+              <div style="font-size:28px; font-weight:800;">Mariage</div>
+              <div style="margin-top:6px; color:rgba(255,255,255,.8); font-size:14px;">Objectif assumé</div>
+            </div>
           </div>
         </div>
       </div>
@@ -581,14 +699,32 @@
     <section>
       <div class="container">
         <div class="section-title center">
-          <div class="eyebrow">Preuves sociales</div>
-          <h2>Un discours qui inspire confiance dès les premiers instants</h2>
-          <p>Même avant d’ajouter de vrais témoignages clients, cette section donne la structure idéale pour rassurer et crédibiliser la marque.</p>
+          <div class="eyebrow">Ils ont trouvé l’amour</div>
+          <h2>Galerie de couples heureux</h2>
+          <p>Des milliers de belles histoires sont nées sur Cœurs Compatibles. Voici quelques-uns de nos couples mariés et la date de leur union.</p>
         </div>
         <div class="testimonials" style="margin-top:34px;">
-          <div class="card"><div class="stars">★★★★★</div><p style="font-size:18px;">“Une approche plus sérieuse que les applications classiques.”</p><strong style="color:#7A1735;">Claire, 34 ans</strong></div>
-          <div class="card"><div class="stars">★★★★★</div><p style="font-size:18px;">“J’ai aimé le fait que la compatibilité soit mise au centre, pas juste les photos.”</p><strong style="color:#7A1735;">Yassine, 31 ans</strong></div>
-          <div class="card"><div class="stars">★★★★★</div><p style="font-size:18px;">“Le positionnement donne confiance. On sent un vrai projet derrière.”</p><strong style="color:#7A1735;">Nadia, 29 ans</strong></div>
+          <div class="card" style="padding:0; overflow:hidden; position:relative; min-height:340px; background:url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;">
+            <div style="position:absolute; inset:auto 0 0 0; padding:22px; background:linear-gradient(180deg, rgba(46,27,34,0) 0%, rgba(46,27,34,.72) 100%); color:white;">
+              <div style="font-size:30px; line-height:1; margin-bottom:10px;">♡</div>
+              <div style="font-size:28px; font-weight:700; line-height:1.2;">Emma & Lucas</div>
+              <div style="margin-top:6px; font-size:16px; color:rgba(255,255,255,.88);">Mariés le 14 septembre 2023</div>
+            </div>
+          </div>
+          <div class="card" style="padding:0; overflow:hidden; position:relative; min-height:340px; background:url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;">
+            <div style="position:absolute; inset:auto 0 0 0; padding:22px; background:linear-gradient(180deg, rgba(46,27,34,0) 0%, rgba(46,27,34,.72) 100%); color:white;">
+              <div style="font-size:30px; line-height:1; margin-bottom:10px;">♡</div>
+              <div style="font-size:28px; font-weight:700; line-height:1.2;">Inès & Karim</div>
+              <div style="margin-top:6px; font-size:16px; color:rgba(255,255,255,.88);">Mariés le 18 août 2024</div>
+            </div>
+          </div>
+          <div class="card" style="padding:0; overflow:hidden; position:relative; min-height:340px; background:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;">
+            <div style="position:absolute; inset:auto 0 0 0; padding:22px; background:linear-gradient(180deg, rgba(46,27,34,0) 0%, rgba(46,27,34,.72) 100%); color:white;">
+              <div style="font-size:30px; line-height:1; margin-bottom:10px;">♡</div>
+              <div style="font-size:28px; font-weight:700; line-height:1.2;">Sofia & Adam</div>
+              <div style="margin-top:6px; font-size:16px; color:rgba(255,255,255,.88);">Mariés le 12 avril 2025</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -630,17 +766,19 @@
         <div class="form-card">
           <div class="eyebrow">Demande d’inscription</div>
           <h3 style="font-size:30px;margin:10px 0 0;">Recevoir les premières informations</h3>
-          <input placeholder="Nom complet" />
-          <input placeholder="Adresse email" />
-          <select>
-            <option>Choisir une formule</option>
-            <option>Découverte</option>
-            <option>Sérieux</option>
-            <option>Engagement</option>
-          </select>
-          <textarea placeholder="Parlez-nous de votre projet"></textarea>
-          <label class="consent"><input type="checkbox" style="margin-top:3px; width:14px; height:14px; flex:0 0 14px;" /> <span>J’accepte d’être contacté(e) par Cœurs Compatibles dans le cadre de ma demande d’informations. </span></label>
-          <div style="margin-top:16px;"><a class="btn btn-primary btn-block" href="#">Envoyer ma demande</a></div>
+          <form method="POST" action="https://script.google.com/macros/s/AKfycbyog3yIa4T2nLUfd92FwxkLbtjaysDY986L25HMJTdQEzr59q6dvoREvArpA7KZlLckTg/exec">
+            <input name="nom_complet" placeholder="Nom complet" />
+            <input name="email" type="email" placeholder="Adresse email" />
+            <select name="formule">
+              <option value="">Choisir une formule</option>
+              <option>Découverte</option>
+              <option>Sérieux</option>
+              <option>Engagement</option>
+            </select>
+            <textarea name="projet" placeholder="Parlez-nous de votre projet"></textarea>
+            <label class="consent"><input name="consentement" type="checkbox" value="oui" style="margin-top:3px; width:14px; height:14px; flex:0 0 14px;" /> <span>J’accepte d’être contacté(e) par Cœurs Compatibles dans le cadre de ma demande d’informations. </span></label>
+            <div style="margin-top:16px;"><button class="btn btn-primary btn-block" type="submit">Envoyer ma demande</button></div>
+          </form>
         </div>
       </div>
     </section>
